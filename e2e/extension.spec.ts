@@ -56,6 +56,17 @@ test('makes no external requests while generating QR codes', async () => {
   await page.click('#tab-text');
   await page.fill('#input', 'hello again');
 
+  // Pro tabs are locked in the free edition: clicking opens settings, never the panel
+  await page.click('#tab-wifi');
+  await expect(page.locator('#settings')).toBeVisible();
+  await expect(page.locator('#panel-wifi')).toBeHidden();
+
+  // an invalid license key must fail LOCALLY (no network) and show an error
+  await page.fill('#license-input', 'TQPRO-FAKE.fakesig');
+  await page.click('#license-apply');
+  await expect(page.locator('#error')).toBeVisible();
+  await expect(page.locator('#error')).toContainText('not valid');
+
   // no external request may have fired during ANY of the above
   expect(external).toEqual([]);
   await context.close();
