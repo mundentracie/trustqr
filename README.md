@@ -32,6 +32,15 @@ TrustQR does one thing: turns text or a URL into a QR code image, entirely insid
 - Download PNG or copy image to clipboard
 - Scoped dark mode — only the popup is themed, never your page
 
+## Pro ($2.9 one-time, lifetime)
+
+- **Wi-Fi QR** — share your network: guests scan and connect, password never leaves the popup
+- **vCard QR** — your contact card as a code for business cards and events
+- **Batch mode** — paste up to 50 lines, get one QR per line with a download-all button
+- License keys are verified **100% offline** (ECDSA P-256 signature checked on-device with WebCrypto) — even Pro cannot phone home. No account, no activation server, no subscription.
+
+Buy: see the [Pro section](#pro-29-one-time-lifetime) — payment link in the store listing and README badge.
+
 ## Development
 
 ```bash
