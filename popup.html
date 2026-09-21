@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="tq-header">
+    <span class="tq-brand">TrustQR</span>
+    <span class="tq-badge">100% local</span>
+  </header>
+
+  <div class="tq-tabs">
+    <button id="tab-text" class="tq-tab active" type="button">Text / URL</button>
+    <button id="tab-page" class="tq-tab" type="button">Current page</button>
+  </div>
+
+  <textarea id="input" rows="3" spellcheck="false"
+    placeholder="Paste text or a URL…"></textarea>
+  <div id="page-url" class="tq-page-url hidden"></div>
+
+  <div class="tq-options">
+    <label class="tq-opt">
+      <span>Size</span>
+      <select id="size">
+        <option value="256">256 px</option>
+        <option value="512" selected>512 px</option>
+        <option value="1024">1024 px</option>
+      </select>
+    </label>
+    <label class="tq-opt">
+      <span>Error correction</span>
+      <select id="ecc">
+        <option value="L">L (7%)</option>
+        <option value="M" selected>M (15%)</option>
+        <option value="Q">Q (25%)</option>
+        <option value="H">H (30%)</option>
+      </select>
+    </label>
+  </div>
+
+  <canvas id="qr" width="232" height="232" class="tq-canvas"></canvas>
+  <p id="placeholder" class="tq-placeholder">Type to generate — nothing leaves this window.</p>
+  <p id="error" class="tq-error hidden"></p>
+
+  <div class="tq-actions">
+    <button id="download" type="button" disabled title="Download PNG">⭳ PNG</button>
+    <button id="copy" type="button" disabled title="Copy image to clipboard">⧉ Copy</button>
+  </div>
+
+  <footer class="tq-footer">
+    <span>MIT · <a href="https://github.com/mundentracie/trustqr" target="_blank" rel="noreferrer">source</a></span>
+    <span>no network · no expiry · no redirects</span>
+  </footer>
+
+  <script src="lib/qrcode.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
