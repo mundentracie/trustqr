@@ -1,5 +1,19 @@
 import { test, expect, chromium, type BrowserContext, type Page, type Request } from '@playwright/test';
 import { join } from 'path';
+import { readFileSync } from 'fs';
+import { createHash } from 'crypto';
+
+// The manifest pins a public key, so the unpacked extension gets a stable ID:
+// first 16 bytes of SHA-256(SPKI DER), each nibble mapped to a-p.
+function extensionId(): string {
+  const manifest = JSON.parse(readFileSync(join(process.cwd(), 'manifest.json'), 'utf8'));
+  const spki = Buffer.from(manifest.key, 'base64');
+  const hash = createHash('sha256').update(spki).digest();
+  return [...hash.slice(0, 16)]
+    .flatMap((b) => [b >> 4, b & 0xf])
+    .map((n) => String.fromCharCode(97 + n))
+    .join('');
+}
 
 // Proof test: loading the popup and generating QR codes must make ZERO external
 // network requests — including the download and clipboard flows.
@@ -21,14 +35,8 @@ test('makes no external requests while generating QR codes', async () => {
     }
   });
 
-  // find the extension id from its service worker-less setup: read from the
-  // chrome://extensions is not needed — the popup is a plain page we can open by id
-  let [sw] = context.serviceWorkers();
-  if (!sw) {
-    sw = await context.waitForEvent('serviceworker', { timeout: 5000 }).catch(() => null as never);
-  }
-  const extId = sw ? new URL(sw.url()).host : null;
-  test.skip(!extId, 'extension id not found');
+  // the manifest pins a key → stable, computable extension id (no service worker needed)
+  const extId = extensionId();
 
   const page: Page = await context.newPage();
   await page.goto(`chrome-extension://${extId}/popup.html`);
