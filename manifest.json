@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TrustQR — Open Source QR Code Generator",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Privacy-first, open-source QR generator. Codes never expire, never redirect, never leave your device. Zero network requests.",
   "homepage_url": "https://github.com/mundentracie/trustqr",
   "icons": {
