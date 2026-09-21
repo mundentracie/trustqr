@@ -39,7 +39,7 @@ TrustQR does one thing: turns text or a URL into a QR code image, entirely insid
 - **Batch mode** — paste up to 50 lines, get one QR per line with a download-all button
 - License keys are verified **100% offline** (ECDSA P-256 signature checked on-device with WebCrypto) — even Pro cannot phone home. No account, no activation server, no subscription.
 
-Buy: a $2.90 one-time PayPal link and store badge will be added once checkout is set up. The license key unlocks all Pro features permanently on every device you sign into.
+Buy: **[Get a Pro license — $2.90 one-time, lifetime](https://www.paypal.com/ncp/payment/3DPLYJQWHBSK2)** (credit card, Apple Pay, or PayPal — no account required). The key is emailed to you and activates offline on every device.
 
 ## Development
 

@@ -13,8 +13,8 @@ node scripts/make-license.mjs ../secrets/trustdownload-license-private.jwk.json
 输出形如 `VFFQUk8t...<base64url 片段>.<base64url 签名>` 的完整密钥（两段用 `.` 分隔，直接粘贴到扩展设置框即可），直接发给买家邮箱。
 
 ## 收款
-- PayPal 快闪收单链接：**待创建 $2.9 固定价商品**（登录 paypal.com → 收付款 → 付款链接和按钮）。
-- 创建后：① 更新本文件 ② README「Pro」段挂购买按钮（Contents API 单文件推送）③ popup 设置页 "Get a key" 链接指向 GitHub README#pro。
+- PayPal 快闪收单链接：**https://www.paypal.com/ncp/payment/3DPLYJQWHBSK2**（$2.90 固定价，已于 09-21 核实：名称/价格/描述正确展示）。
+- 创建后：① 更新本文件 ② README「Pro」段已挂购买按钮 ③ popup 设置页 "Get a key" 链接已指向该付款链接。
 
 ## 发货流程
 1. 收到 PayPal 付款邮件（含买家邮箱）
