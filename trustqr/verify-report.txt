@@ -1,0 +1,32 @@
+TrustQR v0.2.0 — verify report (2026-09-21, post-audit)
+
+[PASS] e2e/extension.spec.ts
+  - playwright.config.ts: timeout 60000ms, 1 worker, serial run
+  - Launches Chromium with the unpacked extension loaded
+  - Opens popup, generates QR from UTF-8 text (中文 + emoji included)
+  - Switches error-correction level, re-renders
+  - Exercises "Current page" tab and back
+  - Pro: locked Wi-Fi tab opens settings (not the panel); invalid license
+    key rejected locally with visible error — zero requests throughout
+  - Asserts: ZERO external network requests fired during the entire session
+  Result: 1 passed (53.4s)
+
+[LICENSE ROUNDTRIP (scripts/make-license.mjs ↔ src/license.js)]
+  - embedded raw public key == JWK-derived raw key: true
+  - valid TQPRO-TEST-0001 signature verifies via WebCrypto: true
+  - tampered id rejected: true
+  - key pair shared with TrustDownload Pro; TQPRO-/TDPRO- prefix isolates products
+
+[STATIC]
+  - manifest.json: MV3, version 0.2.0, permissions = activeTab + storage only
+  - no background, no content_scripts, no host_permissions, no web_accessible_resources
+  - no fetch/XHR/WebSocket/sendBeacon in popup.js, src/license.js or lib/qrcode.js
+  - vendored encoder: qrcode-generator 1.4.4 (MIT, Kazuhiko Arase)
+
+Extension ID (pinned key): cebdgleleeofgbjioepmeldimiinibec
+
+---
+TrustQR v0.1.0 — verify report (2026-09-21)
+
+[PASS] e2e/extension.spec.ts
+  Result: 1 passed (10.7s)

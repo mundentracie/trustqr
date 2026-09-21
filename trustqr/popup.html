@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="tq-header">
+    <span class="tq-brand">TrustQR</span>
+    <span id="pro-badge" class="tq-badge hidden">PRO</span>
+    <button id="settings-btn" type="button" class="tq-gear" title="Settings">⚙</button>
+  </header>
+
+  <div id="settings" class="tq-settings hidden">
+    <div id="pro-status" class="tq-pro-status"></div>
+    <div class="tq-license-row">
+      <input id="license-input" type="text" spellcheck="false" placeholder="Paste your license key here">
+      <button id="license-apply" type="button">Activate</button>
+    </div>
+    <p class="tq-license-hint">
+      Pro unlocks Wi-Fi, vCard and batch QR codes — verified 100% offline, no account.
+      <a href="https://github.com/mundentracie/trustqr#pro" target="_blank" rel="noreferrer">Get a key →</a>
+    </p>
+  </div>
+
+  <div class="tq-tabs">
+    <button id="tab-text" class="tq-tab active" type="button">Text</button>
+    <button id="tab-page" class="tq-tab" type="button">Page</button>
+    <button id="tab-wifi" class="tq-tab tq-pro-tab" type="button">Wi-Fi<span class="tq-lock">🔒</span></button>
+    <button id="tab-vcard" class="tq-tab tq-pro-tab" type="button">vCard<span class="tq-lock">🔒</span></button>
+    <button id="tab-batch" class="tq-tab tq-pro-tab" type="button">Batch<span class="tq-lock">🔒</span></button>
+  </div>
+
+  <!-- Text / URL -->
+  <textarea id="input" rows="3" spellcheck="false"
+    placeholder="Paste text or a URL…"></textarea>
+
+  <!-- Current page -->
+  <div id="page-url" class="tq-page-url hidden"></div>
+
+  <!-- Wi-Fi (Pro) -->
+  <div id="panel-wifi" class="tq-panel hidden">
+    <input id="wifi-ssid" type="text" placeholder="Network name (SSID)">
+    <input id="wifi-pass" type="text" placeholder="Password">
+    <select id="wifi-security">
+      <option value="WPA" selected>WPA / WPA2 / WPA3</option>
+      <option value="WEP">WEP</option>
+      <option value="nopass">Open (no password)</option>
+    </select>
+  </div>
+
+  <!-- vCard (Pro) -->
+  <div id="panel-vcard" class="tq-panel hidden">
+    <input id="vc-name" type="text" placeholder="Full name">
+    <input id="vc-org" type="text" placeholder="Organization (optional)">
+    <input id="vc-phone" type="text" placeholder="Phone (optional)">
+    <input id="vc-email" type="text" placeholder="Email (optional)">
+    <input id="vc-url" type="text" placeholder="Website (optional)">
+  </div>
+
+  <!-- Batch (Pro) -->
+  <div id="panel-batch" class="tq-panel hidden">
+    <textarea id="batch-input" rows="4" spellcheck="false"
+      placeholder="One QR per line…"></textarea>
+    <div id="batch-list" class="tq-batch-list"></div>
+    <button id="batch-download" type="button" class="tq-wide-btn hidden">Download all</button>
+  </div>
+
+  <div class="tq-options" id="single-options">
+    <label class="tq-opt">
+      <span>Size</span>
+      <select id="size">
+        <option value="256">256 px</option>
+        <option value="512" selected>512 px</option>
+        <option value="1024">1024 px</option>
+      </select>
+    </label>
+    <label class="tq-opt">
+      <span>Error correction</span>
+      <select id="ecc">
+        <option value="L">L (7%)</option>
+        <option value="M" selected>M (15%)</option>
+        <option value="Q">Q (25%)</option>
+        <option value="H">H (30%)</option>
+      </select>
+    </label>
+  </div>
+
+  <canvas id="qr" width="232" height="232" class="tq-canvas"></canvas>
+  <p id="placeholder" class="tq-placeholder">Type to generate — nothing leaves this window.</p>
+  <p id="error" class="tq-error hidden"></p>
+
+  <div class="tq-actions" id="single-actions">
+    <button id="download" type="button" disabled title="Download PNG">⭳ PNG</button>
+    <button id="copy" type="button" disabled title="Copy image to clipboard">⧉ Copy</button>
+  </div>
+
+  <footer class="tq-footer">
+    <span>MIT · <a href="https://github.com/mundentracie/trustqr" target="_blank" rel="noreferrer">source</a></span>
+    <span>no network · no expiry · no redirects</span>
+  </footer>
+
+  <script src="lib/qrcode.js"></script>
+  <script src="src/license.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
