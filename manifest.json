@@ -23,5 +23,6 @@
   "permissions": [
     "activeTab",
     "storage"
-  ]
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuF5AsvjsMjLYaz8dp00vH7IECqnqYHeBe0FTvo4RTS6La5S3n5wJp1SrEv0MQcayd1jXQlcVcp9etMuIFCRaiecmVuYi34GHKiEgaj3doXcoxSJnC20Bg5kbbiERZiC7HFxROve+CFbIOKwuxlFh7Qa9OWpsvwIJTKz9SH/xBO5dD3SBEgih8q3mP0W0tr8t7rcPLziwEkA6SU+i4Lo5+pVHRDLuadZt4Pkt2HQ+OqBH3yaWOaaukUSsNvIyT9XksYDnz6mndiELW1wYpqrGuTA2x3cJtnoVkF0JL9QK51PZ5BQ/HkrZb306cABTMoZ4CHuQiP2gItqGS8mmbGxS6wIDAQAB"
 }
