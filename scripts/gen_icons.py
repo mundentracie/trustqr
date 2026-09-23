@@ -69,3 +69,9 @@ os.makedirs(OUT, exist_ok=True)
 for size in (16, 32, 48, 128):
     write_png(os.path.join(OUT, 'icon%d.png' % size), make_icon(size), size, size)
     print('icon%d.png written' % size)
+
+# Edge Partner Center requires a 300x300 store logo
+EDGE_OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'store', 'edge')
+os.makedirs(EDGE_OUT, exist_ok=True)
+write_png(os.path.join(EDGE_OUT, 'store-logo-300.png'), make_icon(300), 300, 300)
+print('store/edge/store-logo-300.png written')
